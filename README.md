@@ -11,6 +11,10 @@ the API call, and display that data in a chart and table form. Selecting or clic
 into a drill down from one level of resolution into a detail level of resolution filtered by the identifier of
 the row selected.
 
+## Acknowledgements
+
+Simple AMCHARTS implementation in [Angular can be found here](https://www.amcharts.com/docs/v4/getting-started/integrations/using-angular2/)
+
 
 ## Details
 
