@@ -46,6 +46,4 @@ testem.log
 Thumbs.db
 package-lock.json
 /server/database.json
-/server/database.json
-/package-lock.json
-/package-lock.json
+/*.log
