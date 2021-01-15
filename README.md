@@ -51,7 +51,7 @@ The candidate will use the following resources:
     1. API Call 1: The first API Call to get data for all users over ‘yesterday’ is available in this
         Yesterday API Call link. This call provides a list of all users, for yesterday without
         specifying a time resolution. Here are the details:
-        demo.<INSERT COMPANY NAME>.com/lwl/api?json={
+        demo.**INSERT COMPANY NAME**.com/lwl/api?json={
         "inspector":"0",
         "basis":"users",
         "date":"yesterday",
@@ -66,7 +66,7 @@ The candidate will use the following resources:
         hour for selected user i.e. ‘db’ in this example but needs to be replaced by the row
         selected/clicked on – and with the resolution specified to be Hourly. Here are the
         updated parameters in this call compared to the first one:
-        demo.<INSERT COMPANY NAME>.com/lwl/api?json={
+        demo.**INSERT COMPANY NAME**.com/lwl/api?json={
         "inspector":"0",
         "basis":"users",
         "date":"yesterday",
