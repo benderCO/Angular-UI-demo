@@ -1,4 +1,5 @@
 export interface Row {
+    end_date?: string,
     user_name: string,
     record_count: number,
     cpu_used_mhz: number,
