@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ChartOptions } from './interface/chart-options';
+import { ChartOptions } from './interface/chart-options.interface';
 
 @Component({
     selector: 'app-root',

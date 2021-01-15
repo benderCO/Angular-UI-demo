@@ -1,11 +1,11 @@
 import { Component, Inject, Input, NgZone, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { ChartOptions } from 'src/app/interface/interface.index';
 
 // amCharts imports
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
-import { ChartOptions } from 'src/app/interface/chart-options';
 
 @Component({
     selector: 'app-chart',
