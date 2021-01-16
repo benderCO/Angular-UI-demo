@@ -1,3 +1,5 @@
+export { Apionequery } from './apionequery.interface';
+export { Apitwoquery } from './apitwoquery.interface';
 export { ChartOptions } from './chart-options.interface';
 export { Grid } from './grid.interface';
 export { Liquidlabs } from './liquidlabs.interface';

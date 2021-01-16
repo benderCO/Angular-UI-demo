@@ -7,13 +7,12 @@
                     <button class="btn btn-outline-secondary" type="button">Search</button>
                 </div>
             </div>
-            <div *ngIf="lwlServiceApiOne | async as response">
+            <div *ngIf="mainServiceApiOne | async as response">
                 <div *ngFor="let tableRow of response.table">
                     {{tableRow.user_name}}
                 </div>
             </div>
-            HEY THERE HI THERE HO THERE
-            <div *ngIf="lwlServiceApiTwo | async as response">
+            <div *ngIf="mainServiceApiTwo | async as response">
                 <div *ngFor="let tableRow of response.table">
                     {{tableRow.user_name}}
                 </div>
