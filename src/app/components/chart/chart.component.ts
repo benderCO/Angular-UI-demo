@@ -34,38 +34,68 @@ export class ChartComponent {
     ngAfterViewInit() {
         // Chart code goes in here
         this.browserOnly(() => {
+
             am4core.useTheme(am4themes_animated);
 
             let chart = am4core.create(this.options.name, am4charts.XYChart);
 
-            chart.paddingRight = 20;
+            chart.paddingBottom = 60;
 
-            let data = [];
-            let visits = 10;
-            for (let i = 1; i < 366; i++) {
-                visits += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
-                data.push({ date: new Date(2018, 0, i), name: "name" + i, value: visits });
+            chart.data = this.options.data.slice(0, 5);
+
+            // Create axes
+            var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
+            categoryAxis.dataFields.category = "user_name";
+            categoryAxis.numberFormatter.numberFormat = "#";
+            categoryAxis.renderer.inversed = true;
+            categoryAxis.renderer.grid.template.location = 0;
+            categoryAxis.renderer.cellStartLocation = 0.1;
+            categoryAxis.renderer.cellEndLocation = 0.9;
+
+            var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
+            valueAxis.renderer.opposite = true;
+
+            // Create series
+            function createSeries(field, name) {
+                var series = chart.series.push(new am4charts.ColumnSeries());
+                series.dataFields.valueX = field;
+                series.dataFields.categoryY = "user_name";
+                series.name = name;
+                series.columns.template.tooltipText = "{user_name}: [bold]{valueX}[/]";
+                series.columns.template.height = am4core.percent(100);
+                series.sequencedInterpolation = true;
+
+                var valueLabel = series.bullets.push(new am4charts.LabelBullet());
+                valueLabel.label.text = "{valueX}";
+                valueLabel.label.horizontalCenter = "left";
+                valueLabel.label.dx = 10;
+                valueLabel.label.hideOversized = false;
+                valueLabel.label.truncate = false;
+
+                var categoryLabel = series.bullets.push(new am4charts.LabelBullet());
+                categoryLabel.label.text = "{name}";
+                categoryLabel.label.horizontalCenter = "right";
+                categoryLabel.label.dx = -10;
+                categoryLabel.label.fill = am4core.color("#fff");
+                categoryLabel.label.hideOversized = false;
+                categoryLabel.label.truncate = false;
             }
 
-            chart.data = data;
-
-            let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-            dateAxis.renderer.grid.template.location = 0;
-
-            let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-            valueAxis.tooltip.disabled = true;
-            valueAxis.renderer.minWidth = 35;
-
-            let series = chart.series.push(new am4charts.LineSeries());
-            series.dataFields.dateX = "date";
-            series.dataFields.valueY = "value";
-            series.tooltipText = "{valueY.value}";
-
-            chart.cursor = new am4charts.XYCursor();
-
-            let scrollbarX = new am4charts.XYChartScrollbar();
-            scrollbarX.series.push(series);
-            chart.scrollbarX = scrollbarX;
+            createSeries("user_name", "User Name");
+            createSeries("record_count", "Record Count");
+            createSeries("cpu_used_mhz", "CPU Used MHZ");
+            createSeries("rank_score", "Rank Score");
+            createSeries("memory_used_mb", "Memory Used MB");
+            createSeries("page_used_mb", "Page Used MB");
+            createSeries("total_io_bps", "Total IO BPS");
+            createSeries("total_iops", "Total IOPS");
+            createSeries("net_total_bps", "Net Total BPS");
+            createSeries("cpu_context_switching_avg", "CPU Switch Average");
+            createSeries("swap_page_faults", "Swap Page Faults");
+            createSeries("page_faults", "Page Faults");
+            createSeries("node_count", "Node Count");
+            createSeries("user_count", "User Count");
+            createSeries("cid_seconds", "CID Seconds");
 
             this.chart = chart;
         });

@@ -7,16 +7,12 @@
                     <button class="btn btn-outline-secondary" type="button">Search</button>
                 </div>
             </div>
-            <div *ngIf="mainServiceApiOne | async as response">
-                <div *ngFor="let tableRow of response.table">
-                    {{tableRow.user_name}}
-                </div>
+            <div *ngIf="mainServiceApiOne | async">
+                <app-chart [options]=chartOptions></app-chart>
             </div>
-            <div *ngIf="mainServiceApiTwo | async as response">
-                <div *ngFor="let tableRow of response.table">
-                    {{tableRow.user_name}}
-                </div>
-            </div>
+            <!-- <div *ngIf="mainServiceApiOne | async">
+                <app-grid [options]=gridOptions></app-grid>
+            </div> -->
         </div>
     </form>
 </div>

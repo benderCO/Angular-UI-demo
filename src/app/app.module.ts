@@ -8,6 +8,7 @@ import { ChartComponent } from './components/chart/chart.component';
 import { MainComponent } from './core/main/main.component';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
+import { GridComponent } from './components/grid/grid.component';
 
 @NgModule({
     declarations: [
@@ -15,7 +16,8 @@ import { FooterComponent } from './core/footer/footer.component';
         ChartComponent,
         MainComponent,
         HeaderComponent,
-        FooterComponent
+        FooterComponent,
+        GridComponent
     ],
     imports: [
         BrowserModule,

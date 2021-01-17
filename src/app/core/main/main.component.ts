@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Observable, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, tap } from 'rxjs/operators';
 
 import { MainService } from './main.service';
 import { Liquidlabs } from 'src/app/interface/liquidlabs.interface';
+import { ChartOptions } from 'src/app/interface/interface.index';
 
 @Component({
     selector: 'app-main',
@@ -13,6 +14,8 @@ import { Liquidlabs } from 'src/app/interface/liquidlabs.interface';
 })
 export class MainComponent implements OnInit, OnDestroy {
     private readonly _cleanup = new Subject();
+
+    public chartOptions: ChartOptions = { name: 'chart1' };
 
     public get mainServiceApiOne(): Observable<Liquidlabs> { return this._mainService.currentOneResponse }
     public get mainServiceApiTwo(): Observable<Liquidlabs> { return this._mainService.currentTwoResponse }
@@ -30,7 +33,10 @@ export class MainComponent implements OnInit, OnDestroy {
             columns: "record_count,cpu_used_mhz,rank_score,memory_used_mb,page_used_mb,total_io_bps,total_iops,net_total_bps,cpu_context_switching_avg,swap_page_faults,page_faults,node_count,user_count,cid_seconds",
             sort_col: "rank_score",
             sort_order: "2"
-        }).subscribe();
+        }).pipe(
+            tap((response: Liquidlabs) => this.chartOptions.data = response.table)
+        )
+            .subscribe();
         this._mainService.loadApiTwo({
             inspector: "0",
             basis: "users",
@@ -39,7 +45,9 @@ export class MainComponent implements OnInit, OnDestroy {
             limit: 0,
             columns: "record_count,cpu_used_mhz,rank_score,memory_used_mb,page_used_mb,total_io_bps,total_iops,net_total_bps,cpu_context_switching_avg,swap_page_faults,page_faults,node_count,user_count,cid_seconds",
             user_name: "db"
-        }).subscribe();
+        }).pipe(
+            takeUntil(this._cleanup)
+        ).subscribe();
     }
 
     ngOnDestroy() {

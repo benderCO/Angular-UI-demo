@@ -1,3 +1,6 @@
+import { Row } from "./row.interface";
+
 export interface ChartOptions {
-    name: string
+    name: string,
+    data?: Row[]
 }
