@@ -1,8 +1,9 @@
+import { KeyValue } from "@angular/common";
 import { Row } from "./row.interface";
 
 export interface GridOptions {
     name: string,
-    columns?: string[],
+    clickFunction?: Function,
     data?: Row[],
-    values?: string[]
+    xref?: KeyValue<string, string>[],
 }

@@ -1,17 +1,19 @@
 <div class="container">
-    <form>
-        <div class="form-group" *ngIf="mainServiceApiYesterday | async">
+    <form [formGroup]="searchForm" (submit)="submitSeach()">
+        <div class="form-group">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search Criteria" aria-label="Search Criteria">
+                <input type="text" formControlName="searchText" class="form-control" placeholder="Search Criteria">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button">Search</button>
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
                 </div>
             </div>
-            <div>
-                <app-chart [options]=chartOptions></app-chart>
-            </div>
-            <div>
-                <app-grid [options]=gridOptions></app-grid>
+            <div class="chart-grid" *ngIf="mainServiceApiYesterday | async">
+                <div>
+                    <app-chart [options]=chartOptions></app-chart>
+                </div>
+                <div>
+                    <app-grid [options]=gridOptions (rowClickedEvent)="rowClick($event)"></app-grid>
+                </div>
             </div>
         </div>
     </form>

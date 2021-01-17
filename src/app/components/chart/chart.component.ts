@@ -81,7 +81,7 @@ export class ChartComponent {
                 categoryLabel.label.truncate = false;
             }
 
-            createSeries("user_name", "User Name");
+            createSeries("user_name", "User");
             createSeries("record_count", "Record Count");
             createSeries("cpu_used_mhz", "CPU Used MHZ");
             createSeries("rank_score", "Rank Score");

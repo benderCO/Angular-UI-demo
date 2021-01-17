@@ -1,3 +1,4 @@
+import { KeyValue } from "@angular/common";
 import { Row } from "./row.interface";
 
 export interface LwlResponse {
@@ -42,5 +43,6 @@ export interface LwlResponse {
     output: string,
     sort_used: string,
     basis_list: string,
-    table: Row[]
+    table: Row[],
+    xref?: KeyValue<string, string>[]
 }

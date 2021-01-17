@@ -15,7 +15,7 @@
         <h5 class='col-sm-1'>Page Faults</h5>
     </div>
     <div *ngFor="let row of data">
-        <div class="row">
+        <div class="row" (click)="rowClick(row)">
             <span class='col-sm-1'>{{row.user_name}}</span>
             <span class='col-sm-1'>{{row.record_count}}</span>
             <span class='col-sm-1'>{{row.cpu_used_mhz}}</span>
