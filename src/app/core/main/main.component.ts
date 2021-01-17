@@ -51,7 +51,7 @@ export class MainComponent implements OnInit, OnDestroy {
         }).pipe(
             tap((response: LwlResponse) => this.chartOptions.data = response.table),
             tap((response: LwlResponse) => this.gridOptions.data = response.table)
-        ).subscribe();
+        ).subscribe().unsubscribe();
     }
 
     public rowClick(row: any) {
@@ -66,7 +66,7 @@ export class MainComponent implements OnInit, OnDestroy {
         }).pipe(
             tap((response: LwlResponse) => this.chartOptions.data = response.table),
             tap((response: LwlResponse) => this.gridOptions.data = response.table)
-        ).subscribe();
+        ).subscribe().unsubscribe();
     }
 
     public ngOnDestroy(): void {
