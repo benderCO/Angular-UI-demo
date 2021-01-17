@@ -1,6 +1,6 @@
 import { Row } from "./row.interface";
 
-export interface Liquidlabs {
+export interface LwlResponse {
     sqlcount?: string[],
     "Liquidware Labs": string,
     timestamp_now: Date,
