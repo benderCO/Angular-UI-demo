@@ -1,34 +1,33 @@
 <div id={{options.name}}></div>
-<div class="grid" *ngIf="options.data | async as data">
-    <h3>Transaction History</h3>
+<div class="grid" *ngIf="options.data as data">
     <div class="row">
-        <h5 class='col-sm-1'>user_name</h5>
-        <h5 class='col-sm-1'>record_count</h5>
-        <h5 class='col-sm-1'>cpu_used_mhz</h5>
-        <h5 class='col-sm-1'>rank_score</h5>
-        <h5 class='col-sm-1'>memory_used_mb</h5>
-        <h5 class='col-sm-1'>page_used_mb</h5>
-        <h5 class='col-sm-1'>page_used_mb</h5>
-        <h5 class='col-sm-1'>total_io_bps</h5>
-        <h5 class='col-sm-1'>total_iops</h5>
-        <h5 class='col-sm-1'>net_total_bps</h5>
-        <h5 class='col-sm-1'>cpu_context_switching_avg</h5>
-        <h5 class='col-sm-1'>swap_page_faults</h5>
+        <h5 class='col-sm-1'>User Name</h5>
+        <h5 class='col-sm-1'>Record Count</h5>
+        <h5 class='col-sm-1'>CPU Used MHZ</h5>
+        <h5 class='col-sm-1'>Rank Score</h5>
+        <h5 class='col-sm-1'>Memory Used MB</h5>
+        <h5 class='col-sm-1'>Page Used MB</h5>
+        <h5 class='col-sm-1'>Total IO BPS</h5>
+        <h5 class='col-sm-1'>Total IOPS</h5>
+        <h5 class='col-sm-1'>Net Total BPS</h5>
+        <h5 class='col-sm-1'>CPU Switch Average</h5>
+        <h5 class='col-sm-1'>Swap Page Faults</h5>
+        <h5 class='col-sm-1'>Page Faults</h5>
     </div>
     <div *ngFor="let row of data">
         <div class="row">
-            <span class='col-sm-1'>user_name</span>
-            <span class='col-sm-1'>record_count</span>
-            <span class='col-sm-1'>cpu_used_mhz</span>
-            <span class='col-sm-1'>rank_score</span>
-            <span class='col-sm-1'>memory_used_mb</span>
-            <span class='col-sm-1'>page_used_mb</span>
-            <span class='col-sm-1'>page_used_mb</span>
-            <span class='col-sm-1'>total_io_bps</span>
-            <span class='col-sm-1'>total_iops</span>
-            <span class='col-sm-1'>net_total_bps</span>
-            <span class='col-sm-1'>cpu_context_switching_avg</span>
-            <span class='col-sm-1'>swap_page_faults</span>
+            <span class='col-sm-1'>{{row.user_name}}</span>
+            <span class='col-sm-1'>{{row.record_count}}</span>
+            <span class='col-sm-1'>{{row.cpu_used_mhz}}</span>
+            <span class='col-sm-1'>{{row.rank_score}}</span>
+            <span class='col-sm-1'>{{row.memory_used_mb}}</span>
+            <span class='col-sm-1'>{{row.page_used_mb}}</span>
+            <span class='col-sm-1'>{{row.total_io_bps}}</span>
+            <span class='col-sm-1'>{{row.total_iops}}</span>
+            <span class='col-sm-1'>{{row.net_total_bps}}</span>
+            <span class='col-sm-1'>{{row.cpu_context_switching_avg}}</span>
+            <span class='col-sm-1'>{{row.swap_page_faults}}</span>
+            <span class='col-sm-1'>{{row.page_faults}}</span>
         </div>
     </div>
 </div>

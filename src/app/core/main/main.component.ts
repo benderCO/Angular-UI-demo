@@ -5,7 +5,7 @@ import { takeUntil, tap } from 'rxjs/operators';
 
 import { MainService } from './main.service';
 import { Liquidlabs } from 'src/app/interface/liquidlabs.interface';
-import { ChartOptions } from 'src/app/interface/interface.index';
+import { ChartOptions, GridOptions } from 'src/app/interface/interface.index';
 
 @Component({
     selector: 'app-main',
@@ -16,6 +16,7 @@ export class MainComponent implements OnInit, OnDestroy {
     private readonly _cleanup = new Subject();
 
     public chartOptions: ChartOptions = { name: 'chart1' };
+    public gridOptions: GridOptions = { name: 'grid1' };
 
     public get mainServiceApiOne(): Observable<Liquidlabs> { return this._mainService.currentOneResponse }
     public get mainServiceApiTwo(): Observable<Liquidlabs> { return this._mainService.currentTwoResponse }
@@ -34,7 +35,8 @@ export class MainComponent implements OnInit, OnDestroy {
             sort_col: "rank_score",
             sort_order: "2"
         }).pipe(
-            tap((response: Liquidlabs) => this.chartOptions.data = response.table)
+            tap((response: Liquidlabs) => this.chartOptions.data = response.table),
+            tap((response: Liquidlabs) => this.gridOptions.data = response.table)
         )
             .subscribe();
         this._mainService.loadApiTwo({

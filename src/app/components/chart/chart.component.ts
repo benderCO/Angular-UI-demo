@@ -41,7 +41,7 @@ export class ChartComponent {
 
             chart.paddingBottom = 60;
 
-            chart.data = this.options.data.slice(0, 5);
+            chart.data = this.options.data.slice(0, 3);
 
             // Create axes
             var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
